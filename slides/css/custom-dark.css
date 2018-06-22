@@ -1,0 +1,107 @@
+/* Code ------------------------------------------------ */
+
+/* Reveal.Js fragments in code: All personal styles must be "registered" here */
+.reveal .slides section .fragment.mycodemark,
+.reveal .slides section .fragment.my-semi-hide {
+    opacity: 1;
+    visibility: inherit;
+}
+
+/* Reveal.Js fragments in code: personal styles are customized here */
+.mycodemark.visible {
+    font-weight: bold;
+}
+
+.my-semi-hide.visible {
+    font-weight: 100;
+}
+
+.reveal .slides section .mycodemark-always {
+    font-weight: bold;
+}
+
+.reveal .slides section .mycodemark-highlight .hljs-comment {
+    font-weight: bold;
+    color: white;
+}
+
+.reveal .slides section .my-semi-hide-always {
+    font-weight: 100;
+}
+
+/* darker background for code samples */
+.hljs {
+    /* background: rgb(5, 5, 5); */
+    background: black;
+    border: 1px solid slategray !important;
+    border-radius: 8px;
+}
+
+/* Other customizations ------------------------------ */
+
+/* Small font for links, notes */
+.reveal .slides .small,
+.reveal .slides .small a {
+    font-size: medium;
+}
+
+.reveal .slides .too-much-content {
+    font-size: 70%;
+}
+
+.reveal .slides strong {
+    color: orange;
+}
+/* Only for debugging */
+/*.slides section.present p .small {
+    font-size: 20px;
+    line-height: 22px;
+}*/
+
+/* Image customizations ------------------------------ */
+
+/* Resize images according to alt text */
+img[alt^=fun-] {
+    width: 800px;
+}
+
+img[alt^=funx-] {
+    height: 550px;
+}
+
+img[alt^=fullscreen-] {
+    width: 100%;
+}
+
+/* Remove border for some images --------------------- */
+.reveal section img[alt^=noborder-] {
+    border: none;
+    box-shadow: none;
+    background-color: black;
+}
+
+span.clouditem {
+    padding-left: 0.15em;
+    padding-right: 0.05em;
+    line-height: 90%;
+    letter-spacing: -0.015em;
+}
+
+/*
+adds some fancy outline to a text -- useful for slides with a bright background
+*/
+.outline {
+    text-shadow: 0 0 5px black;
+}
+
+
+/* Slides with background image can be tweaked with the `data-state` class
+    Here: the `dimmed` class
+*/
+.dimmed-more .slide-background {
+    opacity: 0.1 !important;
+}
+
+.dimmed .slide-background {
+    opacity: 0.25 !important;
+}

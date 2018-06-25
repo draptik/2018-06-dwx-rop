@@ -6,16 +6,16 @@
 
 Patrick Drechsler
 
-`#etka18`
+`#dwx2018`
 
-- <i class="fa fa-calendar" aria-hidden="true"></i> 21.06.2018
-- <i class="fa fa-twitter" aria-hidden="true"></i> @drechsler
+<i class="fa fa-calendar" aria-hidden="true"></i> 25.06.2018&nbsp;&nbsp;&nbsp;&nbsp;
+<i class="fa fa-twitter" aria-hidden="true"></i> @drechsler&nbsp;&nbsp;&nbsp;&nbsp;
+<i class="fa fa-github" aria-hidden="true"></i> draptik
 
 x---
 
 **Patrick Drechsler**
 
-- "gelernter" Biologe
 - C# Entwickler
 - Schwerpunkte: DDD, FP
 - Softwerkskammer

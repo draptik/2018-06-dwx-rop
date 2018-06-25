@@ -10,7 +10,7 @@ Patrick Drechsler
 
 <i class="fa fa-calendar" aria-hidden="true"></i> 25.06.2018&nbsp;&nbsp;&nbsp;&nbsp;
 <i class="fa fa-twitter" aria-hidden="true"></i> @drechsler&nbsp;&nbsp;&nbsp;&nbsp;
-<i class="fa fa-github" aria-hidden="true"></i> draptik
+<i class="fa fa-github" aria-hidden="true"></i> github.com/draptik
 
 x---
 

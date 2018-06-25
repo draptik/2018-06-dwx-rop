@@ -122,7 +122,7 @@ x---
 - let's go live... <!-- .element: class="fragment" data-fragment-index="2" -->
 
 x---
-
+<!-- .slide: data-background-image="resources/armageddon-2721568_960_720.jpg" data-background-size="cover" data-state="dimmed"-->
 <section>
     <h2 style="color:darkred">...No error handling...</h2>
     <h1 style="color:darkred">What could possibly go wrong?</h1>
@@ -142,7 +142,7 @@ customer = _customerRepository.Create(customer);
 <span class="mycodemark-highlight">// can fail</span>
 _mailConfirmer.SendWelcome(customer);
 
-return new CustomerCreatedViewModel(customer.Id) {Success = <span style="color:black;font-weight:bold">??</span>};
+return new CustomerCreatedViewModel(customer.Id) {Success = <span style="color:white;font-weight:bold">??</span>};
 </code>
 </pre>
 
@@ -277,7 +277,8 @@ x---
     - [LaYumba.Functional](https://github.com/la-yumba/functional-csharp-code)
     - [language-ext](https://github.com/louthy/language-ext)
 - Java: [auch möglich (Link im Abspann)](https://www.heise.de/developer/artikel/Railway-Oriented-Programming-in-Java-3598438.html)
-- F#: Sprachfeature
+- F#, Rust: Sprachfeature
+- JS: Promises
 
 <i class="fa fa-smile-o" aria-hidden="true" style="font-size:2em"></i>
 
@@ -289,21 +290,23 @@ x---
 
 ### "Result zu Fuß"...
 
-```csharp
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
 public class Result {
     public bool Success { get; }
     public string Error { get; }
 
     protected Result(bool success, string error) { /* … */ }
 
-    public static Result Fail(string message) { /* … */ }
+    public static Result <span class="mycodemark-always2">Fail</span>(string message) { /* … */ }
 
-    public static Result<T> Ok<T>(T value) {  /* … */ }
+    public static Result&lt;T&gt; <span class="mycodemark-always2">Ok&lt;T&gt;</span>(T value) {  /* … */ }
 }
-```
+</code></pre>
 
-```csharp
-public class Result<T> : Result {
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
+public class Result&lt;T&gt; : Result {
     public T Value { get; }
     public bool IsFailure => !Success;
 
@@ -312,7 +315,7 @@ public class Result<T> : Result {
         Value = value;
     }
 }
-```
+</code></pre>
 
 Note:
 
@@ -359,18 +362,23 @@ x---
 
 ### Verketten von Result
 
-```csharp
-static Result<U> OnSuccess(this R<T> result,
-                        Func<T, U> func) { /*...*/ }
-```
-```csharp
-static Result<T> OnFailure<T>(this Result<T> result, 
-                        Action<string> action) { /*...*/ }
-```
-```csharp
-static K OnBoth<T, K>(this Result<T> result, 
-                        Func<Result<T>, K> func) { /*...*/ }
-```
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
+static Result&lt;U&gt; <span class="mycodemark-always">OnSuccess</span>(this R&lt;T&gt; result,
+                        Func&lt;T, U&gt; func) { /*...*/ }
+</code></pre>
+
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
+static Result&lt;T&gt; <span class="mycodemark-always2">OnFailure</span>&lt;T&gt;(this Result&lt;T&gt; result, 
+                        Action&lt;string&gt; action) { /*...*/ }
+</code></pre>
+
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
+static K <span class="mycodemark-always2">OnBoth</span>&lt;T, K&gt;(this Result&lt;T&gt; result, 
+                        Func&lt;Result&lt;T&gt;, K&gt; func) { /*...*/ }
+</code></pre>
 
 x---
 
@@ -404,7 +412,7 @@ let bind switchFunction twoTrackInput =
 ```
 **`bind`** kombiniert zwei 2-Track Funktionen`...`
 
-(entspricht OnSucces, OnFailure, Onboth)
+(entspricht OnSucces, OnFailure)
 
 x--
 
@@ -458,15 +466,16 @@ x---
 
 Haben wir unser Ziel erreicht?
 
-```csharp
+<pre>
+<code data-noescape data-trim class="lang-csharp hljs">
 var customerResult = Validate(createCustomerViewModel);
 var result = customerResult
-    .OnSuccess(c => _customerRepository.Create(c))
-    .OnSuccess(c => _mailConfirmer.SendWelcome(c))
-    .OnBoth(resultAtEnd => resultAtEnd.IsSuccess
+    <span class="mycodemark-always2">.OnSuccess</span>(c => _customerRepository.Create(c))
+    <span class="mycodemark-always2">.OnSuccess</span>(c => _mailConfirmer.SendWelcome(c))
+    <span class="mycodemark-always2">.OnBoth</span>(resultAtEnd => resultAtEnd.IsSuccess
         ? new CustomerCreatedViewModel(resultAtEnd.Value.Id)
         : CreateErrorResponse(resultAtEnd.Error));
-```
+</code></pre>
 
 x---
 

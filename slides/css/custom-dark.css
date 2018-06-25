@@ -20,6 +20,11 @@
     font-weight: bold;
 }
 
+.reveal .slides section .mycodemark-always2 {
+    font-weight: bold;
+    color: rgb(239, 239, 143);
+}
+
 .reveal .slides section .mycodemark-highlight .hljs-comment {
     font-weight: bold;
     color: white;
@@ -104,4 +109,8 @@ adds some fancy outline to a text -- useful for slides with a bright background
 
 .dimmed .slide-background {
     opacity: 0.25 !important;
+}
+
+.dimmed-less .slide-background {
+    opacity: 0.5 !important;
 }
